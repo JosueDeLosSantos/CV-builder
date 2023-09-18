@@ -1,0 +1,9 @@
+:root {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  --main-bg-color: hsl(220deg 14.29% 95.88%);
+  background-color: var(--main-bg-color);
+}
