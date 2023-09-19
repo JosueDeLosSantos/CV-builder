@@ -5,5 +5,6 @@
 }
 body {
   --main-bg-color: hsl(220deg 14.29% 95.88%);
+  --side-bar-gap: 1.2rem;
   background-color: var(--main-bg-color);
 }

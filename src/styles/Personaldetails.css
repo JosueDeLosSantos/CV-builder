@@ -1,0 +1,9 @@
+.input-section {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    display: flex;
+    gap: .5rem;
+}
