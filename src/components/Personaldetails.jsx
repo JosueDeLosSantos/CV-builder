@@ -45,7 +45,7 @@ export function Personaldetails({ fullName, email, ph, location,
 }
 
 export function Inputsection({ id, labeltext, inputType,
-    placeholder, value , onFullname}) {
+    placeholder, value , name, onFullname}) {
     return (
         <div className="input-section">
             <label htmlFor={id}>
@@ -56,6 +56,7 @@ export function Inputsection({ id, labeltext, inputType,
                 id={id}
                 placeholder={placeholder}
                 value={value}
+                name="fullName"
                 onChange = {onFullname}
             />
         </div>

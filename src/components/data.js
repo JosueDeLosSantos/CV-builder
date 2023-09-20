@@ -10,6 +10,14 @@ export const personalInfo = {
 export const education = [
     {
         id: uuid(),
+        school: "Ministerio de Educacion Superior, Ciencia y Tecnología",
+        degree: "Advanced english",
+        startDate: "01/2015",
+        endDate: "12/2015",
+        location: "Santo Domingo, DO"
+    },
+    {
+        id: uuid(),
         school: "Universidad Del Caribe",
         degree: "Bachelor's Degree in Computer Science",
         startDate: "06/2018",

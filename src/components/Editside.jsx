@@ -3,7 +3,7 @@ import Navbar from "./Navbar"
 import Formcontainer from "./Formcontainer"
 
 function Editside({ fullName, email, ph, location,
-	onFullname, onEmail, onPh, onLocation }) {
+	onFullname, onEmail, onPh, onLocation, ed }) {
 	return (
 		<div className="edit-side">
 			<Navbar />
@@ -16,6 +16,7 @@ function Editside({ fullName, email, ph, location,
 				onEmail={onEmail}
 				onPh={onPh}
 				onLocation={onLocation}
+				ed = {ed}
 			/>
 		</div>
 	)

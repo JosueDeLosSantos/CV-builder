@@ -4,12 +4,15 @@ import { v4 as uuid } from "uuid"
 import Editside from "./components/Editside"
 import Resumecontainer from "./components/Resumecontainer"
 import { personalInfo } from "./components/data"
+import { education } from "./components/data"
 
 function App() {
 	const [personalI, setpersonalI] = useState(personalInfo)
+  const [ed, seted] = useState(education)
 
 	function handleFullname(e) {
-		setpersonalI({ ...personalI, fullName: `${e.target.value}` })
+    setpersonalI({ ...personalI, fullName: `${e.target.value}` })
+    const { name, value } = e.target
 	}
 	function handleEmail(e) {
 		setpersonalI({ ...personalI, email: `${e.target.value}` })
@@ -19,7 +22,7 @@ function App() {
 	}
 	function handleLocation(e) {
 		setpersonalI({ ...personalI, location: `${e.target.value}` })
-	}
+  }
 
 	return (
 		<div className="app">
@@ -31,7 +34,8 @@ function App() {
 				onFullname={handleFullname}
 				onEmail={handleEmail}
 				onPh={handlePh}
-				onLocation={handleLocation}
+        onLocation={handleLocation}
+        ed = {ed}
 			/>
 			<Resumecontainer
 				fullName={personalI.fullName}
