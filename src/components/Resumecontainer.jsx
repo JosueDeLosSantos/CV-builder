@@ -1,32 +1,23 @@
 import "../styles/Resumecontainer.css"
 
-function Resumecontainer({fullName, email, ph, location,
-	onFullname, onEmail, onPh, onLocation}) {
-    return (
-        <div className="resume-container">
-            <Personalinfo
-                fullName ={fullName}
-                email={email}
-				ph={ph}
-				location={location}
-				onFullname={onFullname}
-				onEmail={onEmail}
-				onPh={onPh}
-				onLocation={onLocation}
-            />
-        </div>
-    )
+function Resumecontainer({ personalI, onFullname }) {
+	return (
+		<div className="resume-container">
+			<Personalinfo personalI={personalI} onFullname={onFullname} />
+		</div>
+	)
 }
 
-function Personalinfo({ fullName, email, ph, location,
-	onFullname, onEmail, onPh, onLocation}) {
+function Personalinfo({ personalI, onFullname }) {
 	return (
 		<>
-			<h1 onChange={onFullname} className="resume-name">{fullName}</h1>
+			<h1 onChange={onFullname} className="resume-name">
+				{personalI.fullName}
+			</h1>
 			<div className="contact-info">
-				<div onChange={onEmail}>{email}</div>
-				<div onChange={onPh}>{ph}</div>
-				<div onChange={onLocation}>{location}</div>
+				<div onChange={onFullname}>{personalI.email}</div>
+				<div onChange={onFullname}>{personalI.ph}</div>
+				<div onChange={onFullname}>{personalI.location}</div>
 			</div>
 		</>
 	)
