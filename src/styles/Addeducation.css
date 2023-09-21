@@ -1,0 +1,15 @@
+.section-content {
+    height: 0;
+    opacity: 0;
+}
+
+.open {
+    height: auto;
+    opacity: 1;
+}
+
+.forms-container {
+    display: flex;
+    flex-direction: column;
+    gap: .4rem;
+}
