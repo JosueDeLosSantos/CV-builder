@@ -1,6 +1,6 @@
 import "../styles/Personaldetails.css"
 
-export function Personaldetails({ personalI, onFullname }) {
+export function Personaldetails({ personalI, onChange }) {
 	return (
 		<form className="personal-details">
 			<h2>Personal Details</h2>
@@ -11,7 +11,7 @@ export function Personaldetails({ personalI, onFullname }) {
 				placeholder="First and last name"
 				value={personalI.fullName}
 				name="fullName"
-				onChange={onFullname}
+				onChange={onChange}
 			/>
 			<Inputsection2
 				id="email"
@@ -21,7 +21,7 @@ export function Personaldetails({ personalI, onFullname }) {
 				recommendation="recommended"
 				value={personalI.email}
 				name="email"
-				onAction={onFullname}
+				onChange={onChange}
 			/>
 			<Inputsection2
 				id="phone-number"
@@ -31,7 +31,7 @@ export function Personaldetails({ personalI, onFullname }) {
 				recommendation="recommended"
 				value={personalI.ph}
 				name="ph"
-				onAction={onFullname}
+				onChange={onChange}
 			/>
 			<Inputsection2
 				id="address"
@@ -41,13 +41,22 @@ export function Personaldetails({ personalI, onFullname }) {
 				recommendation="recommended"
 				value={personalI.location}
 				name="location"
-				onAction={onFullname}
+				onChange={onChange}
 			/>
 		</form>
 	)
 }
 
-export function Inputsection({ id, labeltext, inputType, placeholder, value, name, onChange }) {
+export function Inputsection({
+	dataSet,
+	id,
+	labeltext,
+	inputType,
+	placeholder,
+	value,
+	name,
+	onChange,
+}) {
 	return (
 		<div className="input-section">
 			<label htmlFor={id}>
@@ -60,19 +69,21 @@ export function Inputsection({ id, labeltext, inputType, placeholder, value, nam
 				value={value}
 				name={name}
 				onChange={onChange}
+				data-key={dataSet}
 			/>
 		</div>
 	)
 }
 
 export function Inputsection2({
+	dataSet,
 	id,
 	labeltext,
 	inputType,
 	placeholder,
 	value,
 	recommendation,
-	onAction,
+	onChange,
 	name,
 }) {
 	return (
@@ -87,7 +98,8 @@ export function Inputsection2({
 				placeholder={placeholder}
 				value={value}
 				name={name}
-				onChange={onAction}
+				onChange={onChange}
+				data-key={dataSet}
 			/>
 		</div>
 	)

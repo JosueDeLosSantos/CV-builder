@@ -1,14 +1,14 @@
 import "../styles/Formcontainer.css"
 import Loader from "./Loader"
 import { Personaldetails } from "./Personaldetails"
-import Addeducation from './Addeducation'
+import Addeducation from "./Addeducation"
 
-function Formcontainer({ personalI, onFullname, ed, onEd }) {
+function Formcontainer({ personalI, onChange, ed, onEd, onNewEdit }) {
 	return (
 		<div className="form-container">
 			<Loader />
-			<Personaldetails personalI={personalI} onFullname={onFullname} />
-			<Addeducation ed={ed} onEd={onEd}/>
+			<Personaldetails personalI={personalI} onChange={onChange} />
+			<Addeducation ed={ed} onEd={onEd} onNewEdit={onNewEdit} />
 		</div>
 	)
 }

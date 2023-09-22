@@ -1,3 +1,14 @@
-.resume-container {
-	flex-grow: 3;
+.education-info {
+    display: flex;
+    border-bottom: 1px solid black;
+}
+
+.ed-info-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.edDates {
+    display: flex;
+    gap: .3rem;
 }
