@@ -2,7 +2,7 @@ import { useState } from "react"
 import "../styles/Addeducation.css"
 import { Inputsection } from "./Personaldetails"
 
-function Addeducation({ ed, onEd, onNewEdit }) {
+function Addeducation({ ed, onEd, onNewEdit, onCancel, onOlded }) {
 	const [open, setopen] = useState("")
 	// toggles the open class to show or hide the section-content
 	function handleSetOpen() {
@@ -19,18 +19,31 @@ function Addeducation({ ed, onEd, onNewEdit }) {
 				<h2 className="expand-btn-header">Education</h2>
 			</button>
 			<div className={"section-content" + " " + open}>
-				<Formscontainer ed={ed} onEd={onEd} onNewEdit={onNewEdit} />
+				<Formscontainer
+					onOlded={onOlded}
+					ed={ed}
+					onEd={onEd}
+					onNewEdit={onNewEdit}
+					onCancel={onCancel}
+				/>
 			</div>
 		</div>
 	)
 }
 
-function Formscontainer({ ed, onEd, onNewEdit }) {
+function Formscontainer({ ed, onEd, onNewEdit, onCancel, onOlded }) {
 	const [edit, setedit] = useState(false)
+	const [add, setadd] = useState(false)
 	const [keytochange, setKeytochange] = useState(false)
 
 	// specify which form should be open
 	function handleSetEdit(e) {
+		if (e.target.classList[0] === "create-form") {
+			setadd(true)
+		} else {
+			setadd(false)
+		}
+
 		if (edit === false) {
 			/* if edit === true a form will be opened
 			containing the info of the object with the id: setKeytochange */
@@ -38,6 +51,11 @@ function Formscontainer({ ed, onEd, onNewEdit }) {
 			// specify which info should be edited
 			setKeytochange(e.target.id)
 		}
+	}
+
+	function cancelSetEdit() {
+		setedit(false)
+		setKeytochange(false)
 	}
 
 	if (edit === false) {
@@ -50,6 +68,7 @@ function Formscontainer({ ed, onEd, onNewEdit }) {
 					ed={ed}
 					onEd={onEd}
 					onNewEdit={onNewEdit}
+					onOlded={onOlded}
 				/>
 				<Addbtn onNewEdit={onNewEdit} onEdit={handleSetEdit} />
 			</div>
@@ -63,15 +82,26 @@ function Formscontainer({ ed, onEd, onNewEdit }) {
 					onEdit={handleSetEdit}
 					ed={ed}
 					onEd={onEd}
+					cancelEdit={cancelSetEdit}
+					onCancel={onCancel}
+					add={add}
 				/>
 			</div>
 		)
 	}
 }
 
-function List({ keytochange, edit, onEdit, ed, onEd }) {
+function List({ keytochange, edit, onEdit, ed, onEd, cancelEdit, onCancel, add, onOlded }) {
 	const listItems = ed.map((el) => (
-		<button onClick={onEdit} className="btn-form" id={el.id} key={el.id}>
+		<button
+			onClick={(e) => {
+				onEdit(e)
+				onOlded()
+			}}
+			className="btn-form"
+			id={el.id}
+			key={el.id}
+		>
 			{el.school}
 		</button>
 	))
@@ -87,6 +117,9 @@ function List({ keytochange, edit, onEdit, ed, onEd }) {
 						startDate={el.startDate}
 						endDate={el.endDate}
 						location={el.location}
+						cancelEdit={cancelEdit}
+						onCancel={onCancel}
+						add={add}
 					/>
 				</form>
 			)
@@ -105,7 +138,18 @@ function List({ keytochange, edit, onEdit, ed, onEd }) {
 	}
 }
 
-function Educationform({ id, school, degree, startDate, endDate, location, onEd }) {
+function Educationform({
+	id,
+	school,
+	degree,
+	startDate,
+	endDate,
+	location,
+	onEd,
+	cancelEdit,
+	onCancel,
+	add,
+}) {
 	return (
 		<>
 			<Inputsection
@@ -158,6 +202,7 @@ function Educationform({ id, school, degree, startDate, endDate, location, onEd 
 				onChange={onEd}
 				dataSet={id}
 			/>
+			<Formbuttons add={add} cancelEdit={cancelEdit} dataSet={id} onCancel={onCancel} />
 		</>
 	)
 }
@@ -173,6 +218,46 @@ function Addbtn({ onNewEdit, onEdit }) {
 			className="create-form"
 		>
 			+Education
+		</button>
+	)
+}
+
+function Formbuttons({ add, cancelEdit, dataSet, onCancel }) {
+	return (
+		<div className="form-btns">
+			<Cancelbtn add={add} onCancel={onCancel} cancelEdit={cancelEdit} dataSet={dataSet} />
+			<Deletebtn dataSet={dataSet} />
+			<Savebtn dataSet={dataSet} />
+		</div>
+	)
+}
+
+function Cancelbtn({ onCancel, cancelEdit, dataSet, add }) {
+	return (
+		<button
+			onClick={(e) => {
+				cancelEdit()
+				onCancel(e)
+			}}
+			data-add={add}
+			data-key={dataSet}
+			className="cancel-btn"
+		>
+			Cancel
+		</button>
+	)
+}
+function Deletebtn({ dataSet }) {
+	return (
+		<button data-key={dataSet} className="delete-btn">
+			Delete
+		</button>
+	)
+}
+function Savebtn({ dataSet }) {
+	return (
+		<button data-key={dataSet} className="save-btn">
+			Save
 		</button>
 	)
 }

@@ -2,7 +2,7 @@ import "../styles/Editside.css"
 import Navbar from "./Navbar"
 import Formcontainer from "./Formcontainer"
 
-function Editside({ personalI, onChange, ed, onEd, onNewEdit }) {
+function Editside({ personalI, onChange, ed, onEd, onNewEdit, onCancel, oldEd, onOlded }) {
 	return (
 		<div className="edit-side">
 			<Navbar />
@@ -12,6 +12,8 @@ function Editside({ personalI, onChange, ed, onEd, onNewEdit }) {
 				ed={ed}
 				onEd={onEd}
 				onNewEdit={onNewEdit}
+				onCancel={onCancel}
+				onOlded={onOlded}
 			/>
 		</div>
 	)

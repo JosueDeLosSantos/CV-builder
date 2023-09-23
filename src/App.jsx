@@ -9,6 +9,11 @@ import { education } from "./components/data"
 function App() {
 	const [personalI, setpersonalI] = useState(personalInfo)
 	const [ed, seted] = useState(education)
+	const [oldEd, setoldEd] = useState(null)
+
+	function handleOlded() {
+		setoldEd(ed)
+	}
 
 	function handleFullname(e) {
 		const { name, value } = e.target
@@ -27,19 +32,47 @@ function App() {
 		seted(newEd)
 	}
 
-  function handleNewEd(e) {
-    const newEl = {
-      id: uuid(),
-      school: "",
-      degree: "",
-      startDate: "",
-      endDate: "",
-      location: ""
-    }
-    e.target.id = newEl.id
-    ed.push(newEl)
-    seted(ed)
-    console.log(ed)
+	function handleNewEd(e) {
+		const newEl = {
+			id: uuid(),
+			school: "",
+			degree: "",
+			startDate: "",
+			endDate: "",
+			location: "",
+		}
+		e.target.id = newEl.id
+		ed.push(newEl)
+		seted(ed)
+	}
+
+	function isWhitespaceString(inputString) {
+		// Use a regular expression to check for whitespace characters
+		const regex = /^\s*$/
+		return regex.test(inputString)
+	}
+
+	function handleCancel(e) {
+		if (e.target.dataset.add === "true") {
+			const cancelId = e.target.dataset.key
+			const newEd = []
+			ed.forEach((el) => {
+				if (el.id === cancelId) {
+					let counter = 0
+					for (let prop in el) {
+						if (!isWhitespaceString(el[prop])) counter += 1
+					}
+					if (counter > 1) {
+						newEd.push(el)
+					}
+				} else {
+					newEd.push(el)
+				}
+			})
+			seted(newEd)
+		} else {
+			seted(oldEd)
+		}
 	}
 
 	return (
@@ -50,13 +83,15 @@ function App() {
 				ed={ed}
 				onEd={handleEd}
 				onNewEdit={handleNewEd}
+				onCancel={handleCancel}
+				onOlded={handleOlded}
 			/>
 			<Resumecontainer
 				personalI={personalI}
 				onChange={handleFullname}
 				ed={ed}
-        onEd={handleEd}
-        onNewEdit={handleNewEd}
+				onEd={handleEd}
+				onNewEdit={handleNewEd}
 			/>
 		</div>
 	)
