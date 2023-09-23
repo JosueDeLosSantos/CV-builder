@@ -45,23 +45,20 @@ function Edlist({ ed, onEd }) {
 	const list = ed.map((el) => {
 		return (
 			<div key={el.id} className="education-info">
-				<div className="ed-info-group">
-					<div className="edDates">
-						<p onChange={onEd}>{el.startDate}</p>
-						<p>-</p>
-						<p onChange={onEd}>{el.endDate}</p>
-					</div>
-					<div className="edLocation">
-						<p onChange={onEd}>{el.location}</p>
-					</div>
+				<div className="edDates">
+					<p onChange={onEd}>{el.startDate}</p>
+					<p>-</p>
+					<p onChange={onEd}>{el.endDate}</p>
 				</div>
-				<div className="ed-info-group">
-					<div className="edDates">
-						<p onChange={onEd}>{el.school}</p>
-					</div>
-					<div className="edLocation">
-						<p onChange={onEd}>{el.degree}</p>
-					</div>
+
+				<div>
+					<p onChange={onEd}>{el.school}</p>
+				</div>
+				<div>
+					<p onChange={onEd}>{el.location}</p>
+				</div>
+				<div>
+					<p onChange={onEd}>{el.degree}</p>
 				</div>
 			</div>
 		)

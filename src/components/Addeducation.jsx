@@ -31,7 +31,6 @@ function Formscontainer({ ed, onEd, onNewEdit }) {
 
 	// specify which form should be open
 	function handleSetEdit(e) {
-		if (e.target.classList.contains("create-form")) console.log(e.target)
 		if (edit === false) {
 			/* if edit === true a form will be opened
 			containing the info of the object with the id: setKeytochange */
@@ -165,7 +164,14 @@ function Educationform({ id, school, degree, startDate, endDate, location, onEd 
 
 function Addbtn({ onNewEdit, onEdit }) {
 	return (
-		<button id="" onClick={(e) => { onNewEdit(e); onEdit(e)}} className="create-form">
+		<button
+			id=""
+			onClick={(e) => {
+				onNewEdit(e)
+				onEdit(e)
+			}}
+			className="create-form"
+		>
 			+Education
 		</button>
 	)

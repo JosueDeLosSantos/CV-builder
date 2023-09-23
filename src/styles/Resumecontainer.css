@@ -1,11 +1,7 @@
 .education-info {
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 2.3fr;
     border-bottom: 1px solid black;
-}
-
-.ed-info-group {
-    display: flex;
-    flex-direction: column;
 }
 
 .edDates {
