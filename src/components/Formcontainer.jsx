@@ -3,7 +3,7 @@ import Loader from "./Loader"
 import { Personaldetails } from "./Personaldetails"
 import Addeducation from "./Addeducation"
 
-function Formcontainer({ personalI, onChange, ed, onEd, onNewEdit, onCancel, onOlded }) {
+function Formcontainer({ personalI, onChange, ed, onEd, onNewEdit, onCancel, onOlded, onSave }) {
 	return (
 		<div className="form-container">
 			<Loader />
@@ -14,6 +14,7 @@ function Formcontainer({ personalI, onChange, ed, onEd, onNewEdit, onCancel, onO
 				onNewEdit={onNewEdit}
 				onCancel={onCancel}
 				onOlded={onOlded}
+				onSave={onSave}
 			/>
 		</div>
 	)

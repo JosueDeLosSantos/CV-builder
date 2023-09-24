@@ -2,7 +2,7 @@ import { useState } from "react"
 import "../styles/Addeducation.css"
 import { Inputsection } from "./Personaldetails"
 
-function Addeducation({ ed, onEd, onNewEdit, onCancel, onOlded }) {
+function Addeducation({ ed, onEd, onNewEdit, onCancel, onOlded, onSave }) {
 	const [open, setopen] = useState("")
 	// toggles the open class to show or hide the section-content
 	function handleSetOpen() {
@@ -25,13 +25,14 @@ function Addeducation({ ed, onEd, onNewEdit, onCancel, onOlded }) {
 					onEd={onEd}
 					onNewEdit={onNewEdit}
 					onCancel={onCancel}
+					onSave={onSave}
 				/>
 			</div>
 		</div>
 	)
 }
 
-function Formscontainer({ ed, onEd, onNewEdit, onCancel, onOlded }) {
+function Formscontainer({ ed, onEd, onNewEdit, onCancel, onOlded, onSave }) {
 	const [edit, setedit] = useState(false)
 	const [add, setadd] = useState(false)
 	const [keytochange, setKeytochange] = useState(false)
@@ -53,6 +54,7 @@ function Formscontainer({ ed, onEd, onNewEdit, onCancel, onOlded }) {
 		}
 	}
 
+	// this triggers a re render of the section-content container
 	function cancelSetEdit() {
 		setedit(false)
 		setKeytochange(false)
@@ -69,6 +71,7 @@ function Formscontainer({ ed, onEd, onNewEdit, onCancel, onOlded }) {
 					onEd={onEd}
 					onNewEdit={onNewEdit}
 					onOlded={onOlded}
+					onSave={onSave}
 				/>
 				<Addbtn onNewEdit={onNewEdit} onEdit={handleSetEdit} />
 			</div>
@@ -85,13 +88,14 @@ function Formscontainer({ ed, onEd, onNewEdit, onCancel, onOlded }) {
 					cancelEdit={cancelSetEdit}
 					onCancel={onCancel}
 					add={add}
+					onSave={onSave}
 				/>
 			</div>
 		)
 	}
 }
 
-function List({ keytochange, edit, onEdit, ed, onEd, cancelEdit, onCancel, add, onOlded }) {
+function List({ keytochange, edit, onEdit, ed, onEd, cancelEdit, onCancel, add, onOlded, onSave }) {
 	const listItems = ed.map((el) => (
 		<button
 			onClick={(e) => {
@@ -120,6 +124,7 @@ function List({ keytochange, edit, onEdit, ed, onEd, cancelEdit, onCancel, add, 
 						cancelEdit={cancelEdit}
 						onCancel={onCancel}
 						add={add}
+						onSave={onSave}
 					/>
 				</form>
 			)
@@ -149,6 +154,7 @@ function Educationform({
 	cancelEdit,
 	onCancel,
 	add,
+	onSave,
 }) {
 	return (
 		<>
@@ -202,7 +208,13 @@ function Educationform({
 				onChange={onEd}
 				dataSet={id}
 			/>
-			<Formbuttons add={add} cancelEdit={cancelEdit} dataSet={id} onCancel={onCancel} />
+			<Formbuttons
+				onSave={onSave}
+				add={add}
+				cancelEdit={cancelEdit}
+				dataSet={id}
+				onCancel={onCancel}
+			/>
 		</>
 	)
 }
@@ -222,12 +234,12 @@ function Addbtn({ onNewEdit, onEdit }) {
 	)
 }
 
-function Formbuttons({ add, cancelEdit, dataSet, onCancel }) {
+function Formbuttons({ onSave, add, cancelEdit, dataSet, onCancel }) {
 	return (
 		<div className="form-btns">
 			<Cancelbtn add={add} onCancel={onCancel} cancelEdit={cancelEdit} dataSet={dataSet} />
 			<Deletebtn dataSet={dataSet} />
-			<Savebtn dataSet={dataSet} />
+			<Savebtn cancelEdit={cancelEdit} onSave={onSave} dataSet={dataSet} />
 		</div>
 	)
 }
@@ -254,9 +266,16 @@ function Deletebtn({ dataSet }) {
 		</button>
 	)
 }
-function Savebtn({ dataSet }) {
+function Savebtn({ cancelEdit, onSave, dataSet }) {
 	return (
-		<button data-key={dataSet} className="save-btn">
+		<button
+			onClick={(e) => {
+				onSave(e)
+				cancelEdit()
+			}}
+			data-key={dataSet}
+			className="save-btn"
+		>
 			Save
 		</button>
 	)

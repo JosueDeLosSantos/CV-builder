@@ -46,12 +46,6 @@ function App() {
 		seted(ed)
 	}
 
-	function isWhitespaceString(inputString) {
-		// Use a regular expression to check for whitespace characters
-		const regex = /^\s*$/
-		return regex.test(inputString)
-	}
-
 	function handleCancel(e) {
 		// if an already created element is opened it will not update that information
 		if (e.target.dataset.newinfo === "true") {
@@ -70,30 +64,32 @@ function App() {
 		}
 	}
 
-	
-	/* function handleAdd(e) {
-		if (e.target.dataset.add === "true") {
-			const cancelId = e.target.dataset.key
-			const newEd = []
-			ed.forEach((el) => {
-				if (el.id === cancelId) {
-					let counter = 0
-					for (let prop in el) {
-						if (!isWhitespaceString(el[prop])) counter += 1
-					}
-					if (counter > 1) {
-						newEd.push(el)
-					}
-				} else {
+	function isWhitespaceString(inputString) {
+		// Use a regular expression to check for whitespace characters
+		const regex = /^\s*$/
+		return regex.test(inputString)
+	}
+
+	function handleAdd(e) {
+		const saveId = e.target.dataset.key
+		const newEd = []
+		ed.forEach((el) => {
+			if (el.id === saveId) {
+				let counter = 0
+				for (let prop in el) {
+					if (!isWhitespaceString(el[prop])) counter += 1
+				}
+				/* the element will only be added if it contains any information
+				other than the id*/
+				if (counter > 1) {
 					newEd.push(el)
 				}
-			})
-			seted(newEd)
-		} else {
-			seted(oldEd)
-		}
-	} */
-	
+			} else {
+				newEd.push(el)
+			}
+		})
+		seted(newEd)
+	}
 
 	return (
 		<div className="app">
@@ -105,6 +101,7 @@ function App() {
 				onNewEdit={handleNewEd}
 				onCancel={handleCancel}
 				onOlded={handleOlded}
+				onSave={handleAdd}
 			/>
 			<Resumecontainer
 				personalI={personalI}
