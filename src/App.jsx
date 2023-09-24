@@ -91,6 +91,17 @@ function App() {
 		seted(newEd)
 	}
 
+	function handleDelete(e) {
+		const deleteId = e.target.dataset.key
+		const newEd = []
+		ed.forEach((el) => {
+			if (el.id !== deleteId) {
+				newEd.push(el)
+			}
+		})
+		seted(newEd)
+	}
+
 	return (
 		<div className="app">
 			<Editside
@@ -102,6 +113,7 @@ function App() {
 				onCancel={handleCancel}
 				onOlded={handleOlded}
 				onSave={handleAdd}
+				onDelete={handleDelete}
 			/>
 			<Resumecontainer
 				personalI={personalI}

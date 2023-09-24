@@ -35,7 +35,7 @@ function Resumebody({ ed, onEd }) {
 function Edinfo({ ed, onEd }) {
 	return (
 		<div className="ed-info">
-			<h3 className="header-text">Professional Experience</h3>
+			<h3 className="header-text">Education</h3>
 			<Edlist ed={ed} onEd={onEd} />
 		</div>
 	)
