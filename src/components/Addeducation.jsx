@@ -96,6 +96,13 @@ function Formscontainer({ ed, onEd, onNewEdit, onCancel, onOlded, onSave }) {
 }
 
 function List({ keytochange, edit, onEdit, ed, onEd, cancelEdit, onCancel, add, onOlded, onSave }) {
+	function Checkschool(school) {
+		if (school === "") {
+			return <>Undefined School / University</>
+		} else {
+			return <>{school}</>
+		}
+	}
 	const listItems = ed.map((el) => (
 		<button
 			onClick={(e) => {
@@ -106,7 +113,7 @@ function List({ keytochange, edit, onEdit, ed, onEd, cancelEdit, onCancel, add, 
 			id={el.id}
 			key={el.id}
 		>
-			{el.school}
+			{Checkschool(el.school)}
 		</button>
 	))
 	const listItemsForm = ed.map((el) => {

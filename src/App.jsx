@@ -108,7 +108,6 @@ function App() {
 				onChange={handleFullname}
 				ed={ed}
 				onEd={handleEd}
-				onNewEdit={handleNewEd}
 			/>
 		</div>
 	)

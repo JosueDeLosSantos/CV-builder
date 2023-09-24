@@ -1,6 +1,6 @@
 import "../styles/Resumecontainer.css"
 
-function Resumecontainer({ personalI, onChange, ed, onEd, onNewEdit }) {
+function Resumecontainer({ personalI, onChange, ed, onEd }) {
 	return (
 		<div className="resume-container">
 			<Personalinfo personalI={personalI} onChange={onChange} />
