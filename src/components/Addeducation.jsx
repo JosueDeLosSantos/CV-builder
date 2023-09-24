@@ -239,7 +239,7 @@ function Cancelbtn({ onCancel, cancelEdit, dataSet, add }) {
 				cancelEdit()
 				onCancel(e)
 			}}
-			data-add={add}
+			data-newinfo={add}
 			data-key={dataSet}
 			className="cancel-btn"
 		>

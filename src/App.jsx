@@ -53,6 +53,25 @@ function App() {
 	}
 
 	function handleCancel(e) {
+		// if an already created element is opened it will not update that information
+		if (e.target.dataset.newinfo === "true") {
+			const cancelId = e.target.dataset.key
+			const newEd = []
+			ed.forEach((el) => {
+				// prevents the just added element cancelId from been added to newEd
+				if (el.id !== cancelId) {
+					newEd.push(el)
+				}
+			})
+			seted(newEd)
+		} else {
+			// it will instead stick to the old information
+			seted(oldEd)
+		}
+	}
+
+	
+	/* function handleAdd(e) {
 		if (e.target.dataset.add === "true") {
 			const cancelId = e.target.dataset.key
 			const newEd = []
@@ -73,7 +92,8 @@ function App() {
 		} else {
 			seted(oldEd)
 		}
-	}
+	} */
+	
 
 	return (
 		<div className="app">
