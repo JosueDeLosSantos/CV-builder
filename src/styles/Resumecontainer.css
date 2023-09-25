@@ -1,10 +1,75 @@
-.education-info, .experience-info {
-    display: grid;
-    grid-template-columns: 1fr 2.3fr;
-    border-bottom: 1px solid black;
+.personal-info,
+.personal-background {
+	padding: 1.5rem;
 }
 
-.edDates, .exDates {
+.personal-background {
+	background-color: var(--resume-bg-color);
+	min-height: 900px;
+}
+
+.contact-info {
+	display: flex;
+	justify-content: space-around;
+	flex-wrap: wrap;
+}
+
+.ed-info,
+.ex-info {
+	padding-bottom: 1.5rem;
+}
+
+.education-info > div,
+.experience-info > div {
+	padding-right: 2rem;
+}
+
+.first-column > div {
+	max-width: 23ch;
+	overflow: hidden;
+}
+
+.second-column > div {
+	max-width: 50ch;
+	overflow: hidden;
+	white-space: pre-line;
+}
+
+/* .descriptiondiv {
+	overflow: hidden;
+	white-space: pre-line;
+}
+
+.descriptiondiv > p {
+	overflow: hidden;
+	white-space: pre-line;
+} */
+
+/* .second-column > div:last-child {
+    max-height: max-content;
+} */
+
+/* .descriptiondiv {
     display: flex;
-    gap: .3rem;
+} */
+
+.second-column > div:first-child {
+	font-weight: bold;
+}
+
+.header-text {
+	padding: 0.25rem;
+}
+
+.education-info,
+.experience-info {
+	display: grid;
+	grid-template-columns: 200px 1fr;
+	margin-bottom: var(--titles-margin-bottom);
+}
+
+.edDates,
+.exDates {
+	display: flex;
+	gap: 0.3rem;
 }

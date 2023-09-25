@@ -151,7 +151,7 @@ function List({
 			)
 		} else {
 			return (
-				<button onClick={onEdit} className="btn-form" id={el.id} key={el.id}>
+				<button className="btn-form" id={el.id} key={el.id}>
 					{el.companyName}
 				</button>
 			)
@@ -265,6 +265,9 @@ function Textareaseccion({ dataSet, id, labeltext, placeholder, value, name, onC
 				name={name}
 				onChange={onChange}
 				data-key={dataSet}
+				rows="5"
+				cols="20"
+				maxLength="200"
 			/>
 		</div>
 	)

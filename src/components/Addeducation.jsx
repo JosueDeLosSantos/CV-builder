@@ -150,7 +150,7 @@ function List({
 			)
 		} else {
 			return (
-				<button onClick={onEdit} className="btn-form" id={el.id} key={el.id}>
+				<button className="btn-form" id={el.id} key={el.id}>
 					{el.school}
 				</button>
 			)

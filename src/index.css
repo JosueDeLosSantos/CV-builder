@@ -7,5 +7,12 @@
 body {
   --main-bg-color: hsl(220deg 14.29% 95.88%);
   --side-bar-gap: 1.2rem;
+  --titles-margin-bottom: 1rem;
+  --resume-bg-color: #fff;
   background-color: var(--main-bg-color);
+}
+
+h1, h3 {
+  text-align: center;
+  margin-bottom: var(--titles-margin-bottom);
 }
