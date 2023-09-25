@@ -8,10 +8,17 @@ function Editside({
 	ed,
 	onEd,
 	onNewEdit,
+	onNewEdit2,
 	onCancel,
+	onCancel2,
 	onOlded,
+	onOldex,
 	onSave,
+	onSave2,
 	onDelete,
+	onDelete2,
+	ex,
+	onEx,
 }) {
 	return (
 		<div className="edit-side">
@@ -22,10 +29,17 @@ function Editside({
 				ed={ed}
 				onEd={onEd}
 				onNewEdit={onNewEdit}
+				onNewEdit2={onNewEdit2}
 				onCancel={onCancel}
+				onCancel2={onCancel2}
 				onOlded={onOlded}
+				onOldex={onOldex}
 				onSave={onSave}
+				onSave2={onSave2}
 				onDelete={onDelete}
+				onDelete2={onDelete2}
+				ex={ex}
+				onEx={onEx}
 			/>
 		</div>
 	)

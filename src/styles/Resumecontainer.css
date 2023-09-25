@@ -1,10 +1,10 @@
-.education-info {
+.education-info, .experience-info {
     display: grid;
     grid-template-columns: 1fr 2.3fr;
     border-bottom: 1px solid black;
 }
 
-.edDates {
+.edDates, .exDates {
     display: flex;
     gap: .3rem;
 }

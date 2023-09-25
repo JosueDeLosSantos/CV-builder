@@ -5,17 +5,23 @@ import Editside from "./components/Editside"
 import Resumecontainer from "./components/Resumecontainer"
 import { personalInfo } from "./components/data"
 import { education } from "./components/data"
+import { experience } from "./components/data"
 
 function App() {
 	const [personalI, setpersonalI] = useState(personalInfo)
 	const [ed, seted] = useState(education)
 	const [oldEd, setoldEd] = useState(null)
+	const [oldEx, setoldEx] = useState(null)
+	const [ex, setex] = useState(experience)
 
 	function handleOlded() {
 		setoldEd(ed)
 	}
+	function handleOldex() {
+		setoldEx(ex)
+	}
 
-	function handleFullname(e) {
+	function handlePersonalI(e) {
 		const { name, value } = e.target
 		setpersonalI({ ...personalI, [name]: value })
 	}
@@ -32,6 +38,18 @@ function App() {
 		seted(newEd)
 	}
 
+	function handleEx(e) {
+		const { name, value, dataset } = e.target
+		const newEx = ex.map((el) => {
+			if (el.id === dataset.key) {
+				return { ...el, [name]: value }
+			} else {
+				return el
+			}
+		})
+		setex(newEx)
+	}
+
 	function handleNewEd(e) {
 		const newEl = {
 			id: uuid(),
@@ -44,6 +62,21 @@ function App() {
 		e.target.id = newEl.id
 		ed.push(newEl)
 		seted(ed)
+	}
+
+	function handleNewEx(e) {
+		const newEl = {
+			id: uuid(),
+			companyName: "",
+			positionTitle: "",
+			startDate: "",
+			endDate: "",
+			location: "",
+			description:"",
+		}
+		e.target.id = newEl.id
+		ex.push(newEl)
+		setex(ex)
 	}
 
 	function handleCancel(e) {
@@ -61,6 +94,24 @@ function App() {
 		} else {
 			// it will instead stick to the old information
 			seted(oldEd)
+		}
+	}
+
+	function handleCancel2(e) {
+		// if an already created element is opened it will not update that information
+		if (e.target.dataset.newinfo === "true") {
+			const cancelId = e.target.dataset.key
+			const newEx = []
+			ex.forEach((el) => {
+				// prevents the just added element cancelId from been added to newEx
+				if (el.id !== cancelId) {
+					newEx.push(el)
+				}
+			})
+			setex(newEx)
+		} else {
+			// it will instead stick to the old information
+			setex(oldEx)
 		}
 	}
 
@@ -91,6 +142,27 @@ function App() {
 		seted(newEd)
 	}
 
+	function handleAdd2(e) {
+		const saveId = e.target.dataset.key
+		const newEx = []
+		ex.forEach((el) => {
+			if (el.id === saveId) {
+				let counter = 0
+				for (let prop in el) {
+					if (!isWhitespaceString(el[prop])) counter += 1
+				}
+				/* the element will only be added if it contains any information
+				other than the id*/
+				if (counter > 1) {
+					newEx.push(el)
+				}
+			} else {
+				newEx.push(el)
+			}
+		})
+		setex(newEx)
+	}
+
 	function handleDelete(e) {
 		const deleteId = e.target.dataset.key
 		const newEd = []
@@ -102,24 +174,44 @@ function App() {
 		seted(newEd)
 	}
 
+	function handleDelete2(e) {
+		const deleteId = e.target.dataset.key
+		const newEx = []
+		ex.forEach((el) => {
+			if (el.id !== deleteId) {
+				newEx.push(el)
+			}
+		})
+		setex(newEx)
+	}
+
 	return (
 		<div className="app">
 			<Editside
 				personalI={personalI}
-				onChange={handleFullname}
+				onChange={handlePersonalI}
 				ed={ed}
 				onEd={handleEd}
 				onNewEdit={handleNewEd}
+				onNewEdit2={handleNewEx}
 				onCancel={handleCancel}
+				onCancel2={handleCancel2}
 				onOlded={handleOlded}
+				onOldex={handleOldex}
 				onSave={handleAdd}
+				onSave2={handleAdd2}
 				onDelete={handleDelete}
+				onDelete2={handleDelete2}
+				ex={ex}
+				onEx={handleEx}
 			/>
 			<Resumecontainer
 				personalI={personalI}
-				onChange={handleFullname}
+				onChange={handlePersonalI}
 				ed={ed}
 				onEd={handleEd}
+				ex={ex}
+				onEx={handleEx}
 			/>
 		</div>
 	)
