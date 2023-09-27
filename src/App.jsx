@@ -13,6 +13,16 @@ function App() {
 	const [oldEd, setoldEd] = useState(null)
 	const [oldEx, setoldEx] = useState(null)
 	const [ex, setex] = useState(experience)
+	const [layouts, setlayouts] = useState('top-look')
+	const [pcolor, setPcolor] = useState("#0e374e")
+
+	function handleSetcolor(e) {
+		setPcolor(e.target.value)
+	}
+
+	function handleLayout(e) {
+		setlayouts(e.target.classList[0])
+	}
 
 	function handleOlded() {
 		setoldEd(ed)
@@ -72,7 +82,7 @@ function App() {
 			startDate: "",
 			endDate: "",
 			location: "",
-			description:"",
+			description: "",
 		}
 		e.target.id = newEl.id
 		ex.push(newEl)
@@ -204,6 +214,9 @@ function App() {
 				onDelete2={handleDelete2}
 				ex={ex}
 				onEx={handleEx}
+				pcolor={pcolor}
+				onPcolor={handleSetcolor}
+				onLayout={handleLayout}
 			/>
 			<Resumecontainer
 				personalI={personalI}
@@ -212,6 +225,8 @@ function App() {
 				onEd={handleEd}
 				ex={ex}
 				onEx={handleEx}
+				pcolor={pcolor}
+				layouts={layouts}
 			/>
 		</div>
 	)

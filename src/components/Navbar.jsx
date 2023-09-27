@@ -1,16 +1,18 @@
-import "../styles/Navbar.css"
-
-function Navbar() {
+function Navbar({ onHide, outHide }) {
 	return (
 		<nav className="sidebar">
-			<Sidebarbutton text="Content" />
-			<Sidebarbutton text="Customize" />
+			<Sidebarbutton onClick={outHide} text="Content" />
+			<Sidebarbutton onClick={onHide} text="Customize" />
 		</nav>
 	)
 }
 
-function Sidebarbutton({ text }) {
-	return <button className="sbarBtn">{text}</button>
+function Sidebarbutton({ text, onClick }) {
+	return (
+		<button onClick={onClick} className="sbarBtn">
+			{text}
+		</button>
+	)
 }
 
 export default Navbar

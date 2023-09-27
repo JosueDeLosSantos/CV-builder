@@ -1,8 +1,7 @@
-import "../styles/Personaldetails.css"
 
-export function Personaldetails({ personalI, onChange }) {
+export function Personaldetails({ personalI, onChange, hide }) {
 	return (
-		<form className="personal-details">
+		<form className={"personal-details" + " " + hide}>
 			<h2>Personal Details</h2>
 			<Inputsection
 				id="full-name"

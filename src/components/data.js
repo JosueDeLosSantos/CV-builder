@@ -12,8 +12,8 @@ export const education = [
 		id: uuid(),
 		school: "Ministerio de Educacion Superior, Ciencia y Tecnología",
 		degree: "Advanced english",
-		startDate: "01/2015",
-		endDate: "12/2015",
+		startDate: "2015-01",
+		endDate: "2015-12",
 		location: "Santo Domingo, DO",
 	},
 	{
@@ -31,10 +31,10 @@ export const experience = [
 		id: uuid(),
 		companyName: "English Institue",
 		positionTitle: "English Teacher",
-		startDate: "06/2012",
-		endDate: "12/2014",
+		startDate: "2012-06",
+		endDate: "2014-12",
 		location: "Santo Domingo, DO",
 		description:
-			"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+			"Lorem Ipsum is sihe industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
 	},
 ]

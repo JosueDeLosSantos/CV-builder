@@ -4,6 +4,11 @@
   padding: 0;
 }
 
+@font-face {
+  font-family: NotoSans-SemiBold;
+  src: url('./assets/Noto_Sans/NotoSans-SemiBold.ttf');
+}
+
 body {
   --main-bg-color: hsl(220deg 14.29% 95.88%);
   --side-bar-gap: 1.2rem;

@@ -35,24 +35,6 @@
 	white-space: pre-line;
 }
 
-/* .descriptiondiv {
-	overflow: hidden;
-	white-space: pre-line;
-}
-
-.descriptiondiv > p {
-	overflow: hidden;
-	white-space: pre-line;
-} */
-
-/* .second-column > div:last-child {
-    max-height: max-content;
-} */
-
-/* .descriptiondiv {
-    display: flex;
-} */
-
 .second-column > div:first-child {
 	font-weight: bold;
 }

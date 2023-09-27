@@ -1,46 +1,57 @@
 import "../styles/Resumecontainer.css"
 
-function Resumecontainer({ personalI, onChange, ed, onEd, ex, onEx }) {
+function Resumecontainer({ pcolor, personalI, ed, onEd, ex, onEx, layouts }) {
+	let styles = {
+		display: "block",
+	}
+	if (layouts === "left-look") {
+		styles = {
+			display: "flex",
+		}
+	} else if (layouts === "right-look") {
+		styles = {
+			display: "flex",
+			flexDirection: "row-reverse",
+		}
+	}
 	return (
-		<div className="resume-container">
-			<Personalinfo personalI={personalI} onChange={onChange} />
-			<Resumebody ed={ed} onEd={onEd} ex={ex} onEx={onEx} />
+		<div style={styles} className="resume-container">
+			<Personalinfo pcolor={pcolor} personalI={personalI} />
+			<Resumebody pcolor={pcolor} ed={ed} onEd={onEd} ex={ex} onEx={onEx} />
 		</div>
 	)
 }
 
-function Personalinfo({ personalI, onChange }) {
+function Personalinfo({ pcolor, personalI }) {
 	const personalIstyles = {
-		backgroundColor: "hsl(201.56deg 69.57% 18.04%)",
+		backgroundColor: pcolor,
 		color: "#fff",
 	}
 	return (
 		<div style={personalIstyles} className="personal-info">
-			<h1 onChange={onChange} className="resume-name">
-				{personalI.fullName}
-			</h1>
+			<h1 className="resume-name">{personalI.fullName}</h1>
 			<div className="contact-info">
-				<div onChange={onChange}>{personalI.email}</div>
-				<div onChange={onChange}>{personalI.ph}</div>
-				<div onChange={onChange}>{personalI.location}</div>
+				<div>{personalI.email}</div>
+				<div>{personalI.ph}</div>
+				<div>{personalI.location}</div>
 			</div>
 		</div>
 	)
 }
 
-function Resumebody({ ed, onEd, ex, onEx }) {
+function Resumebody({ pcolor, ed, onEd, ex, onEx }) {
 	return (
 		<div className="personal-background">
-			<Edinfo ed={ed} onEd={onEd} />
-			<Exinfo ex={ex} onEx={onEx} />
+			<Edinfo pcolor={pcolor} ed={ed} onEd={onEd} />
+			<Exinfo pcolor={pcolor} ex={ex} onEx={onEx} />
 		</div>
 	)
 }
 
-function Edinfo({ ed, onEd }) {
+function Edinfo({ pcolor, ed, onEd }) {
 	const h3styles = {
 		backgroundColor: "rgba(14,55,78,.07)",
-		color: "hsl(201.56deg 69.57% 18.04%)",
+		color: pcolor,
 	}
 	return (
 		<div className="ed-info">
@@ -52,10 +63,10 @@ function Edinfo({ ed, onEd }) {
 	)
 }
 
-function Exinfo({ ex, onEx }) {
+function Exinfo({ pcolor, ex, onEx }) {
 	const h3styles = {
 		backgroundColor: "rgba(14,55,78,.07)",
-		color: "hsl(201.56deg 69.57% 18.04%)",
+		color: pcolor,
 	}
 	return (
 		<div className="ex-info">
@@ -69,6 +80,20 @@ function Exinfo({ ex, onEx }) {
 
 function Edlist({ ed, onEd }) {
 	const list = ed.map((el) => {
+		if (el.startDate) {
+			const parts = el.startDate.split("-")
+			if (parts.length === 2) {
+				const customFormat = parts[1] + "/" + parts[0]
+				el.startDate = customFormat
+			}
+		}
+		if (el.endDate) {
+			const parts = el.endDate.split("-")
+			if (parts.length === 2) {
+				const customFormat = parts[1] + "/" + parts[0]
+				el.endDate = customFormat
+			}
+		}
 		return (
 			<div key={el.id} className="education-info">
 				<div className="first-column">
@@ -101,6 +126,20 @@ function Edlist({ ed, onEd }) {
 
 function Exlist({ ex, onEx }) {
 	const list = ex.map((el) => {
+		if (el.startDate) {
+			const parts = el.startDate.split("-")
+			if (parts.length === 2) {
+				const customFormat = parts[1] + "/" + parts[0]
+				el.startDate = customFormat
+			}
+		}
+		if (el.endDate) {
+			const parts = el.endDate.split("-")
+			if (parts.length === 2) {
+				const customFormat = parts[1] + "/" + parts[0]
+				el.endDate = customFormat
+			}
+		}
 		return (
 			<div key={el.id} className="experience-info">
 				<div className="first-column">

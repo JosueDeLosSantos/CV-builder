@@ -1,8 +1,8 @@
 import { useState } from "react"
-import "../styles/Addeducation.css"
 import { Inputsection } from "./Personaldetails"
+import { Inputsection2 } from "./Personaldetails"
 
-function Addeducation({ ed, onEd, onNewEdit, onCancel, onOlded, onSave, onDelete }) {
+function Addeducation({ ed, onEd, onNewEdit, onCancel, onOlded, onSave, onDelete, hide }) {
 	const [open, setopen] = useState("")
 	// toggles the open class to show or hide the section-content
 	function handleSetOpen() {
@@ -14,7 +14,7 @@ function Addeducation({ ed, onEd, onNewEdit, onCancel, onOlded, onSave, onDelete
 	}
 
 	return (
-		<div className="add-education">
+		<div className={"add-education" + " " + hide}>
 			<button onClick={handleSetOpen} className="expand-btn">
 				<h2 className="expand-btn-header">Education</h2>
 			</button>
@@ -148,12 +148,6 @@ function List({
 					/>
 				</form>
 			)
-		} else {
-			return (
-				<button className="btn-form" id={el.id} key={el.id}>
-					{el.school}
-				</button>
-			)
 		}
 	})
 	if (edit) {
@@ -177,6 +171,22 @@ function Educationform({
 	onSave,
 	onDelete,
 }) {
+	if (startDate) {
+		const parts = startDate.split("/")
+		if (parts.length === 2) {
+			const customFormat = parts[1] + "-" + parts[0]
+			startDate = customFormat
+		}
+	}
+
+	if (endDate) {
+		const parts = endDate.split("/")
+		if (parts.length === 2) {
+			const customFormat = parts[1] + "-" + parts[0]
+			endDate = customFormat
+		}
+	}
+
 	return (
 		<>
 			<Inputsection
@@ -200,7 +210,7 @@ function Educationform({
 				dataSet={id}
 			/>
 			<Inputsection
-				inputType="text"
+				inputType="month"
 				id="start-date"
 				labeltext="Start Date"
 				placeholder="Enter Start Date"
@@ -210,7 +220,7 @@ function Educationform({
 				dataSet={id}
 			/>
 			<Inputsection
-				inputType="text"
+				inputType="month"
 				id="end-date"
 				labeltext="End Date"
 				placeholder="Enter End Date"
@@ -219,13 +229,14 @@ function Educationform({
 				onChange={onEd}
 				dataSet={id}
 			/>
-			<Inputsection
+			<Inputsection2
 				inputType="text"
 				id="location"
 				labeltext="Location"
 				placeholder="Enter Location"
 				value={location}
 				name="location"
+				recommendation="optional"
 				onChange={onEd}
 				dataSet={id}
 			/>

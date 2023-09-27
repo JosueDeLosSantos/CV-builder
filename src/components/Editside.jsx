@@ -1,3 +1,4 @@
+import { useState } from "react"
 import "../styles/Editside.css"
 import Navbar from "./Navbar"
 import Formcontainer from "./Formcontainer"
@@ -19,10 +20,21 @@ function Editside({
 	onDelete2,
 	ex,
 	onEx,
+	pcolor,
+	onPcolor,
+	onLayout
 }) {
+	const [hide, sethide] = useState("")
+	function onsethide() {
+		sethide("hide")
+	}
+	function outsethide() {
+		sethide("")
+	}
+
 	return (
 		<div className="edit-side">
-			<Navbar />
+			<Navbar outHide={outsethide} onHide={onsethide} />
 			<Formcontainer
 				personalI={personalI}
 				onChange={onChange}
@@ -40,6 +52,10 @@ function Editside({
 				onDelete2={onDelete2}
 				ex={ex}
 				onEx={onEx}
+				hide={hide}
+				pcolor={pcolor}
+				onPcolor={onPcolor}
+				onLayout={onLayout}
 			/>
 		</div>
 	)

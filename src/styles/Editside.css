@@ -1,8 +1,148 @@
-
 .edit-side {
-    display: flex;
-    flex-direction: column;
-    gap: var(--side-bar-gap);
-    max-width: 40ch;
-    min-width: 35ch;
+	display: flex;
+	flex-direction: column;
+	gap: var(--side-bar-gap);
+	width: 35ch;
+}
+
+.sidebar,
+.loader,
+.personal-details,
+.add-education,
+.add-experience,
+.layout,
+.Color {
+	background-color: var(--resume-bg-color);
+	padding: 1rem;
+	border-radius: 0.5rem;
+}
+
+.sidebar {
+	display: flex;
+	flex-direction: column;
+}
+
+.loader {
+	display: flex;
+}
+
+.form-container,
+.Customize {
+	display: flex;
+	flex-direction: column;
+	gap: var(--side-bar-gap);
+}
+
+.personal-details h2,
+.Customize h2 {
+	margin: 0.5rem 0 1rem 0;
+}
+
+.input-section {
+	display: flex;
+	flex-direction: column;
+	gap: 0.2rem;
+	padding-bottom: 0.7rem;
+}
+
+label > * {
+	font-family: NotoSans-SemiBold;
+}
+
+.recommended-text {
+	color: #9ca3af;
+	font-size: 0.7rem;
+	margin-left: 0.5rem;
+}
+
+input,
+textarea {
+	background-color: var(--main-bg-color);
+	border: 2px solid transparent;
+	border-radius: 0.7rem;
+	padding: 0.5rem;
+}
+
+textarea {
+	resize: none;
+}
+
+.expand-btn {
+	background-color: initial;
+	border: none;
+	margin: 0.5rem;
+}
+
+.form-btns {
+	padding: 1rem 0 1rem 0;
+	display: flex;
+	justify-content: space-evenly;
+}
+
+.section-content,
+.hide {
+	height: 0;
+	opacity: 0;
+	z-index: -1;
+}
+
+.open {
+	height: auto;
+	opacity: 1;
+	padding: 1rem 0 1rem 0;
+}
+
+.forms-container {
+	display: flex;
+	flex-direction: column;
+	gap: 0.4rem;
+}
+
+.add-experience {
+	z-index: 1;
+}
+
+.optionbtns button {
+	background-color: transparent;
+    border: none;
+}
+
+.optionbtns button > div {
+	width: 2.5rem;
+	height: 2.5rem;
+	border: 1px solid black;
+	border-radius: 5px;
+}
+
+.optionbtns {
+	display: flex;
+	gap: 1rem;
+}
+
+.accent-color {
+	display: flex;
+	align-items: center;
+	font-size: 1.1rem;
+}
+
+input[type="color"] {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	background-color: transparent;
+	width: 3.5rem;
+	height: 3.5rem;
+	border: none;
+	cursor: pointer;
+	border-radius: 50%;
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+}
+
+input[type="color"]::-webkit-color-swatch {
+	border-radius: 50%;
+}
+
+input[type="color"]::-moz-color-swatch {
+	border-radius: 50%;
 }
