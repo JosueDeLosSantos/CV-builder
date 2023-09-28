@@ -13,8 +13,12 @@ function App() {
 	const [oldEd, setoldEd] = useState(null)
 	const [oldEx, setoldEx] = useState(null)
 	const [ex, setex] = useState(experience)
-	const [layouts, setlayouts] = useState('top-look')
+	const [layouts, setlayouts] = useState("top-look")
 	const [pcolor, setPcolor] = useState("#0e374e")
+
+	function handlePcolor(v) {
+		setPcolor(v)
+	}
 
 	function handleSetcolor(e) {
 		setPcolor(e.target.value)
@@ -227,6 +231,7 @@ function App() {
 				onEx={handleEx}
 				pcolor={pcolor}
 				layouts={layouts}
+				onPcolor={handlePcolor}
 			/>
 		</div>
 	)

@@ -1,6 +1,23 @@
+// import { useState, useEffect } from "react"
+
 import "../styles/Resumecontainer.css"
 
 function Resumecontainer({ pcolor, personalI, ed, onEd, ex, onEx, layouts }) {
+	/* const [hcolor, setHcolor] = useState("#fff")
+	const [thcolor, setTHcolor] = useState("#eef1f2") */
+
+	//controls the resume colors
+
+	/* if (isBackgroundColorTooLight(pcolor)) {
+		setHcolor(pcolor)
+		onPcolor("#000000")
+		setTHcolor("#000000")
+	} else {
+		setHcolor("#fff")
+		setTHcolor("#eef1f2")
+	} */
+
+	// controls the resume layout
 	let styles = {
 		display: "block",
 	}
@@ -22,10 +39,43 @@ function Resumecontainer({ pcolor, personalI, ed, onEd, ex, onEx, layouts }) {
 	)
 }
 
+function isBackgroundColorTooLight(backgroundColor) {
+	// Function to calculate relative luminance
+	function getLuminance(color) {
+		const rgb = color.slice(1) // Remove the "#" at the beginning
+		const r = parseInt(rgb.slice(0, 2), 16) / 255
+		const g = parseInt(rgb.slice(2, 4), 16) / 255
+		const b = parseInt(rgb.slice(4, 6), 16) / 255
+		const gammaCorrectedRGB = [r, g, b].map((value) => {
+			if (value <= 0.03928) {
+				return value / 12.92
+			} else {
+				return Math.pow((value + 0.055) / 1.055, 2.4)
+			}
+		})
+		return (
+			0.2126 * gammaCorrectedRGB[0] +
+			0.7152 * gammaCorrectedRGB[1] +
+			0.0722 * gammaCorrectedRGB[2]
+		)
+	}
+
+	// Define a luminance threshold (0.5 is commonly used as a midpoint)
+	const luminanceThreshold = 0.3
+
+	// Calculate the relative luminance of the background color
+	const luminance = getLuminance(backgroundColor)
+
+	// Check if the background color is too light
+	return luminance > luminanceThreshold
+}
+
 function Personalinfo({ pcolor, personalI }) {
+	const mainTitle = isBackgroundColorTooLight(pcolor) ? pcolor : "#fff"
+	const bg = isBackgroundColorTooLight(pcolor) ? "#000000" : pcolor
 	const personalIstyles = {
-		backgroundColor: pcolor,
-		color: "#fff",
+		backgroundColor: bg,
+		color: mainTitle,
 	}
 	return (
 		<div style={personalIstyles} className="personal-info">
@@ -49,8 +99,9 @@ function Resumebody({ pcolor, ed, onEd, ex, onEx }) {
 }
 
 function Edinfo({ pcolor, ed, onEd }) {
+	const bg = isBackgroundColorTooLight(pcolor) ? "#000000" : "#eef1f2"
 	const h3styles = {
-		backgroundColor: "rgba(14,55,78,.07)",
+		backgroundColor: bg,
 		color: pcolor,
 	}
 	return (
@@ -64,8 +115,9 @@ function Edinfo({ pcolor, ed, onEd }) {
 }
 
 function Exinfo({ pcolor, ex, onEx }) {
+	const bg = isBackgroundColorTooLight(pcolor) ? "#000000" : "#eef1f2"
 	const h3styles = {
-		backgroundColor: "rgba(14,55,78,.07)",
+		backgroundColor: bg,
 		color: pcolor,
 	}
 	return (
