@@ -7,9 +7,6 @@
 @font-face {
   font-family: NotoSans-SemiBold;
   src: url('./assets/Noto_Sans/NotoSans-SemiBold.ttf');
-}
-
-@font-face {
   font-family: JosefinSans;
   src: url('./assets/Josefin_Sans/JosefinSans-VariableFont_wght.ttf');
 }
