@@ -22,7 +22,8 @@ function Editside({
 	onEx,
 	pcolor,
 	onPcolor,
-	onLayout
+	onLayout,
+	pfont
 }) {
 	const [hide, sethide] = useState("")
 	function onsethide() {
@@ -56,6 +57,7 @@ function Editside({
 				pcolor={pcolor}
 				onPcolor={onPcolor}
 				onLayout={onLayout}
+				pfont={pfont}
 			/>
 		</div>
 	)

@@ -1,9 +1,10 @@
-function Customize({ hide, pcolor, onPcolor, onLayout }) {
+function Customize({ hide, pcolor, onPcolor, onLayout, pfont }) {
 	const toggleHide = hide ? "" : "hide"
 	return (
 		<div className={"Customize" + " " + toggleHide}>
 			<Layout onLayout={onLayout} pcolor={pcolor} />
 			<Color onPcolor={onPcolor} pcolor={pcolor} />
+			<Fonts pfont={pfont} />
 		</div>
 	)
 }
@@ -48,6 +49,29 @@ function Color({ pcolor, onPcolor }) {
 				Color picker
 				<input onInput={onPcolor} type="color" value={pcolor} />
 			</label>
+		</div>
+	)
+}
+
+function Fonts({pfont}) {
+	return (
+		<div className="Fonts">
+			<h2>Fonts</h2>
+
+			<div className="optionbtns">
+				<button onClick={pfont} className="arial">
+					<div className="arial">Aa</div>
+					Arial
+				</button>
+				<button onClick={pfont} className="Josefin">
+					<div className="josefin">Aa</div>
+					Josefin
+				</button>
+				<button onClick={pfont} className="mono">
+					<div className="mono">Aa</div>
+					Mono
+				</button>
+			</div>
 		</div>
 	)
 }

@@ -1,34 +1,31 @@
-// import { useState, useEffect } from "react"
-
 import "../styles/Resumecontainer.css"
 
-function Resumecontainer({ pcolor, personalI, ed, onEd, ex, onEx, layouts }) {
-	/* const [hcolor, setHcolor] = useState("#fff")
-	const [thcolor, setTHcolor] = useState("#eef1f2") */
-
-	//controls the resume colors
-
-	/* if (isBackgroundColorTooLight(pcolor)) {
-		setHcolor(pcolor)
-		onPcolor("#000000")
-		setTHcolor("#000000")
+function Resumecontainer({ pcolor, personalI, ed, onEd, ex, onEx, layouts, font }) {
+	// controls fonts
+	let fontStyle = ""
+	if (font === "mono") {
+		fontStyle = "monospace, 'Courier New', Courier, Verdana, Tahoma, sans-serif"
+	} else if (font === "josefin") {
+		fontStyle = "JosefinSans"
 	} else {
-		setHcolor("#fff")
-		setTHcolor("#eef1f2")
-	} */
+		fontStyle = "Arial, Helvetica, sans-serif"
+	}
 
 	// controls the resume layout
 	let styles = {
 		display: "block",
+		fontFamily: fontStyle,
 	}
 	if (layouts === "left-look") {
 		styles = {
 			display: "flex",
+			fontFamily: fontStyle,
 		}
 	} else if (layouts === "right-look") {
 		styles = {
 			display: "flex",
 			flexDirection: "row-reverse",
+			fontFamily: fontStyle,
 		}
 	}
 	return (

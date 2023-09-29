@@ -9,6 +9,11 @@
   src: url('./assets/Noto_Sans/NotoSans-SemiBold.ttf');
 }
 
+@font-face {
+  font-family: JosefinSans;
+  src: url('./assets/Josefin_Sans/JosefinSans-VariableFont_wght.ttf');
+}
+
 body {
   --main-bg-color: hsl(220deg 14.29% 95.88%);
   --side-bar-gap: 1.2rem;

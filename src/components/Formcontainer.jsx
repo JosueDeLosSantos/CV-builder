@@ -24,12 +24,13 @@ function Formcontainer({
 	hide,
 	pcolor,
 	onPcolor,
-	onLayout
+	onLayout,
+	pfont
 }) {
 	return (
 		<div className="form-container">
 			<Loader />
-			<Customize onLayout={onLayout} onPcolor={onPcolor} hide={hide} pcolor={pcolor} />
+			<Customize pfont={pfont} onLayout={onLayout} onPcolor={onPcolor} hide={hide} pcolor={pcolor} />
 			<Personaldetails hide={hide} personalI={personalI} onChange={onChange} />
 			<Addeducation
 				hide={hide}

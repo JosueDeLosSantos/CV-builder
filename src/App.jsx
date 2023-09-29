@@ -15,6 +15,11 @@ function App() {
 	const [ex, setex] = useState(experience)
 	const [layouts, setlayouts] = useState("top-look")
 	const [pcolor, setPcolor] = useState("#0e374e")
+	const [font, setPfont] = useState("arial")
+
+	function handleFonts(e) {
+		setPfont(e.target.classList.value)
+	}
 
 	function handlePcolor(v) {
 		setPcolor(v)
@@ -221,6 +226,7 @@ function App() {
 				pcolor={pcolor}
 				onPcolor={handleSetcolor}
 				onLayout={handleLayout}
+				pfont={handleFonts}
 			/>
 			<Resumecontainer
 				personalI={personalI}
@@ -232,6 +238,7 @@ function App() {
 				pcolor={pcolor}
 				layouts={layouts}
 				onPcolor={handlePcolor}
+				font={font}
 			/>
 		</div>
 	)

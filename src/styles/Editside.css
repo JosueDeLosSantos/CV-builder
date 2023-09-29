@@ -112,6 +112,20 @@ textarea {
 	height: 2.5rem;
 	border: 1px solid black;
 	border-radius: 5px;
+	font-size: 1.4rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.optionbtns button > div:is(.mono) {
+	font-family: monospace, 'Courier New', Courier, Verdana, Tahoma, sans-serif;
+}
+.optionbtns button > div:is(.josefin) {
+	font-family: JosefinSans;
+}
+.optionbtns button > div:is(.arial) {
+	font-family: Arial, Helvetica, sans-serif;
 }
 
 .optionbtns {
