@@ -20,10 +20,32 @@
 .sidebar {
 	display: flex;
 	flex-direction: column;
+	gap: .5rem;
 }
+
+.sidebar button {
+	background-color: #f5f5f5;
+	border: none;
+	color: #0e374e;
+	padding: 0.5rem;
+	font-family: inherit;
+	border-radius: .5rem;
+}
+
+.loader button {
+	background-color: #f5f5f5;
+	border: none;
+	color: #0e374e;
+	padding: 0.5rem;
+	font-family: inherit;
+	border-radius: .2rem;
+}
+
 
 .loader {
 	display: flex;
+	justify-content:space-between;
+	flex-wrap: wrap;
 }
 
 .form-container,
@@ -45,7 +67,7 @@
 	padding-bottom: 0.7rem;
 }
 
-label > * {
+.sidebar, .loader, .form-container label > * {
 	font-family: NotoSans-SemiBold;
 }
 
@@ -104,7 +126,7 @@ textarea {
 
 .optionbtns button {
 	background-color: transparent;
-    border: none;
+	border: none;
 }
 
 .optionbtns button > div {
@@ -119,7 +141,7 @@ textarea {
 }
 
 .optionbtns button > div:is(.mono) {
-	font-family: monospace, 'Courier New', Courier, Verdana, Tahoma, sans-serif;
+	font-family: monospace, "Courier New", Courier, Verdana, Tahoma, sans-serif;
 }
 .optionbtns button > div:is(.josefin) {
 	font-family: JosefinSans;
