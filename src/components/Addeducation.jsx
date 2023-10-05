@@ -40,6 +40,7 @@ function Formscontainer({ ed, onEd, onNewEdit, onCancel, onOlded, onSave, onDele
 
 	// specify which form should be open
 	function handleSetEdit(e) {
+		console.log(e.target)
 		if (e.target.classList[0] === "create-form") {
 			setadd(true)
 		} else {

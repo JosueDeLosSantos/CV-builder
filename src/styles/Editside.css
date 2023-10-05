@@ -8,8 +8,6 @@
 .sidebar,
 .loader,
 .personal-details,
-.add-education,
-.add-experience,
 .layout,
 .Color {
 	background-color: var(--resume-bg-color);
@@ -20,7 +18,7 @@
 .sidebar {
 	display: flex;
 	flex-direction: column;
-	gap: .5rem;
+	gap: 0.5rem;
 }
 
 .sidebar button {
@@ -29,7 +27,7 @@
 	color: #0e374e;
 	padding: 0.5rem;
 	font-family: inherit;
-	border-radius: .5rem;
+	border-radius: 0.5rem;
 }
 
 .loader button {
@@ -38,13 +36,12 @@
 	color: #0e374e;
 	padding: 0.5rem;
 	font-family: inherit;
-	border-radius: .2rem;
+	border-radius: 0.2rem;
 }
-
 
 .loader {
 	display: flex;
-	justify-content:space-between;
+	justify-content: space-between;
 	flex-wrap: wrap;
 }
 
@@ -67,7 +64,9 @@
 	padding-bottom: 0.7rem;
 }
 
-.sidebar, .loader, .form-container label > * {
+.sidebar,
+.loader,
+.form-container label > * {
 	font-family: NotoSans-SemiBold;
 }
 
@@ -87,12 +86,28 @@ textarea {
 
 textarea {
 	resize: none;
+	overflow: hidden;
+}
+
+.expand-btn,
+.btn-form {
+	border: none;
+	width: 100%;
+	padding: 1rem;
+	background-color: var(--resume-bg-color);
+	border-radius: .5rem;
 }
 
 .expand-btn {
-	background-color: initial;
+	margin-bottom: 0.4rem;
+}
+
+.create-form {
 	border: none;
-	margin: 0.5rem;
+	width: fit-content;
+	background-color: var(--resume-bg-color);
+	padding: 1rem 3rem;
+	border-radius: 40%;
 }
 
 .form-btns {
@@ -111,13 +126,20 @@ textarea {
 .open {
 	height: auto;
 	opacity: 1;
-	padding: 1rem 0 1rem 0;
 }
 
 .forms-container {
 	display: flex;
 	flex-direction: column;
 	gap: 0.4rem;
+	align-items: center;
+}
+
+.education-form, .experience-form {
+	background-color: var(--resume-bg-color);
+	padding: 1rem;
+	width: 100%;
+	border-radius: .5rem;
 }
 
 .add-experience {
