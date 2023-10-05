@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { Inputsection } from "./Personaldetails"
 import { Inputsection2 } from "./Personaldetails"
+import { AutoFixNormal } from "@mui/icons-material"
 
 function Addeducation({ ed, onEd, onNewEdit, onCancel, onOlded, onSave, onDelete, hide }) {
 	const [open, setopen] = useState("")
@@ -40,19 +41,24 @@ function Formscontainer({ ed, onEd, onNewEdit, onCancel, onOlded, onSave, onDele
 
 	// specify which form should be open
 	function handleSetEdit(e) {
-		console.log(e.target)
-		if (e.target.classList[0] === "create-form") {
-			setadd(true)
+		if (e.target) {
+			if (e.target.classList[0] === "create-form") {
+				setadd(true)
+			} else {
+				setadd(false)
+			}
+
+			if (edit === false) {
+				/* if edit === true a form will be opened
+				containing the info of the object with the id: setKeytochange */
+				setedit(true)
+				// specify which info should be edited
+				setKeytochange(e.target.id)
+			}
 		} else {
 			setadd(false)
-		}
-
-		if (edit === false) {
-			/* if edit === true a form will be opened
-			containing the info of the object with the id: setKeytochange */
 			setedit(true)
-			// specify which info should be edited
-			setKeytochange(e.target.id)
+			setKeytochange(e.id)
 		}
 	}
 
@@ -116,6 +122,7 @@ function List({
 			return <>{school}</>
 		}
 	}
+
 	const listItems = ed.map((el) => (
 		<button
 			onClick={(e) => {
@@ -127,6 +134,21 @@ function List({
 			key={el.id}
 		>
 			{Checkschool(el.school)}
+			<AutoFixNormal
+				id={el.id}
+				key={el.id}
+				onClick={(e) => {
+					if (e.target.tagName === "path") {
+						onEdit(e.target.parentNode)
+						onOlded()
+						// disable default behavior of the icon component
+						e.stopPropagation()
+					} else {
+						onEdit(e)
+						onOlded()
+					}
+				}}
+			/>
 		</button>
 	))
 	const listItemsForm = ed.map((el) => {
