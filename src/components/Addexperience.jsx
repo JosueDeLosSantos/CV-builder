@@ -1,7 +1,9 @@
 import { useState } from "react"
 import { Inputsection } from "./Personaldetails"
 import { Inputsection2 } from "./Personaldetails"
-import { AutoFixNormal } from "@mui/icons-material"
+import AutoFixNormal from "@mui/icons-material/AutoFixNormal"
+import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline"
+import WorkIcon from '@mui/icons-material/Work';
 
 function Addexperience({ ex, onEx, onOldex, onNewEdit, onCancel, onSave, onDelete, hide }) {
 	const [open, setopen] = useState("")
@@ -17,6 +19,7 @@ function Addexperience({ ex, onEx, onOldex, onNewEdit, onCancel, onSave, onDelet
 	return (
 		<div className={"add-experience" + " " + hide}>
 			<button onClick={handleSetOpen} className="expand-btn">
+				<WorkIcon />
 				<h2 className="expand-btn-header">Experience</h2>
 			</button>
 			<div className={"section-content" + " " + open}>
@@ -42,7 +45,11 @@ function Formscontainer({ ex, onEx, onNewEdit, onCancel, onOldex, onSave, onDele
 	// specify which form should be open
 	function handleSetEdit(e) {
 		if (e.target) {
-			if (e.target.classList[0] === "create-form") {
+			if (
+				e.target.classList[0] === "create-form" ||
+				e.target.parentNode.classList[0] === "create-form" ||
+				e.target.parentNode.parentNode.classList[0] === "create-form"
+			) {
 				setadd(true)
 			} else {
 				setadd(false)
@@ -50,10 +57,14 @@ function Formscontainer({ ex, onEx, onNewEdit, onCancel, onOldex, onSave, onDele
 
 			if (edit === false) {
 				/* if edit === true a form will be opened
-					containing the info of the object with the id: setKeytochange */
+				containing the info of the object with the id: setKeytochange */
 				setedit(true)
 				// specify which info should be edited
-				setKeytochange(e.target.id)
+				if (e.target.tagName === "path") {
+					setKeytochange(e.target.parentNode.id)
+				} else {
+					setKeytochange(e.target.id)
+				}
 			}
 		} else {
 			setadd(false)
@@ -136,6 +147,7 @@ function List({
 			{Checkschool(el.companyName)}
 
 			<AutoFixNormal
+				sx={{ fontSize: "1.5em" }}
 				id={el.id}
 				key={el.id}
 				onClick={(e) => {
@@ -318,7 +330,16 @@ function Addbtn({ onNewEdit, onEdit }) {
 			}}
 			className="create-form"
 		>
-			+Experience
+			<AddCircleOutlineIcon
+				id=""
+				onClick={(e) => {
+					onNewEdit(e)
+					onEdit(e)
+					e.stopPropagation()
+				}}
+				sx={{ fontSize: "1em" }}
+			/>
+			Experience
 		</button>
 	)
 }

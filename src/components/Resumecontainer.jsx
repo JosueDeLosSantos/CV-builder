@@ -1,4 +1,7 @@
 import "../styles/Resumecontainer.css"
+import EmailIcon from "@mui/icons-material/Email"
+import PhoneIcon from "@mui/icons-material/Phone"
+import PlaceIcon from "@mui/icons-material/Place"
 
 function Resumecontainer({ pcolor, personalI, ed, onEd, ex, onEx, layouts, font }) {
 	// controls fonts
@@ -74,16 +77,48 @@ function Personalinfo({ pcolor, personalI }) {
 		backgroundColor: bg,
 		color: mainTitle,
 	}
+
 	return (
 		<div style={personalIstyles} className="personal-info">
 			<h1 className="resume-name">{personalI.fullName}</h1>
 			<div className="contact-info">
-				<div>{personalI.email}</div>
-				<div>{personalI.ph}</div>
-				<div>{personalI.location}</div>
+				<Emailtext email={personalI.email} />
+				<Phonetext ph={personalI.ph} />
+				<Locationtext location={personalI.location} />
 			</div>
 		</div>
 	)
+}
+
+function Emailtext({ email }) {
+	if (email !== "") {
+		return (
+			<div>
+				<EmailIcon sx={{ fontSize: "1.1em" }} />
+				{email}
+			</div>
+		)
+	}
+}
+function Phonetext({ ph }) {
+	if (ph !== "") {
+		return (
+			<div>
+				<PhoneIcon sx={{ fontSize: "1.1em" }} />
+				{ph}
+			</div>
+		)
+	}
+}
+function Locationtext({ location }) {
+	if (location !== "") {
+		return (
+			<div>
+				<PlaceIcon sx={{ fontSize: "1.1em" }} />
+				{location}
+			</div>
+		)
+	}
 }
 
 function Resumebody({ pcolor, ed, onEd, ex, onEx }) {

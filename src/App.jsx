@@ -14,8 +14,20 @@ function App() {
 	const [oldEx, setoldEx] = useState(null)
 	const [ex, setex] = useState(experience)
 	const [layouts, setlayouts] = useState("top-look")
-	const [pcolor, setPcolor] = useState("#0e374e")
+	const [pcolor, setPcolor] = useState("#105C70")
 	const [font, setPfont] = useState("arial")
+
+	function onClearResume() {
+		setpersonalI({ ...personalI, fullName: "", email: "", ph: "", location: "" })
+		seted([])
+		setex([])
+	}
+
+	function onLoadSample() {
+		setpersonalI(personalInfo)
+		seted(education)
+		setex(experience)
+	}
 
 	function handleFonts(e) {
 		setPfont(e.target.classList.value)
@@ -78,7 +90,13 @@ function App() {
 			endDate: "",
 			location: "",
 		}
-		e.target.id = newEl.id
+
+		if (e.target.tagName === "path") {
+			e.target.parentNode.id = newEl.id
+		} else {
+			e.target.id = newEl.id
+		}
+
 		ed.push(newEl)
 		seted(ed)
 	}
@@ -93,7 +111,13 @@ function App() {
 			location: "",
 			description: "",
 		}
-		e.target.id = newEl.id
+
+		if (e.target.tagName === "path") {
+			e.target.parentNode.id = newEl.id
+		} else {
+			e.target.id = newEl.id
+		}
+
 		ex.push(newEl)
 		setex(ex)
 	}
@@ -227,6 +251,8 @@ function App() {
 				onPcolor={handleSetcolor}
 				onLayout={handleLayout}
 				pfont={handleFonts}
+				onClearResume={onClearResume}
+				onLoadSample={onLoadSample}
 			/>
 			<Resumecontainer
 				personalI={personalI}

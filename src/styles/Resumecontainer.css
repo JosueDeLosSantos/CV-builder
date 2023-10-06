@@ -1,3 +1,7 @@
+.resume-container {
+	min-width: 600px;
+}
+
 .personal-info,
 .personal-background {
 	padding: 1.5rem;

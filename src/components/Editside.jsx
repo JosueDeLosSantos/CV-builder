@@ -23,7 +23,9 @@ function Editside({
 	pcolor,
 	onPcolor,
 	onLayout,
-	pfont
+	pfont,
+	onClearResume,
+	onLoadSample
 }) {
 	const [hide, sethide] = useState("")
 	function onsethide() {
@@ -35,8 +37,10 @@ function Editside({
 
 	return (
 		<div className="edit-side">
-			<Navbar outHide={outsethide} onHide={onsethide} />
+			<Navbar  outHide={outsethide} onHide={onsethide} />
 			<Formcontainer
+				onLoadSample={onLoadSample}
+				onClearResume={onClearResume}
 				personalI={personalI}
 				onChange={onChange}
 				ed={ed}

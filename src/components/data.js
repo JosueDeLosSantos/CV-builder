@@ -1,8 +1,8 @@
 import { v4 as uuid } from "uuid"
 
 export const personalInfo = {
-	fullName: "John Doe",
-	email: "jhondoe@hotmail.com",
+	fullName: "Francisco Martinez",
+	email: "franciscom@hotmail.com",
 	ph: "1 809 433 4578",
 	location: "Santo Domingo, DO",
 }
@@ -10,7 +10,7 @@ export const personalInfo = {
 export const education = [
 	{
 		id: uuid(),
-		school: "Ministerio de Educacion Superior, Ciencia y Tecnología",
+		school: "MESCYT",
 		degree: "Advanced english",
 		startDate: "2015-01",
 		endDate: "2015-12",
@@ -29,7 +29,7 @@ export const education = [
 export const experience = [
 	{
 		id: uuid(),
-		companyName: "English Institue",
+		companyName: "English Institute",
 		positionTitle: "English Teacher",
 		startDate: "2012-06",
 		endDate: "2014-12",

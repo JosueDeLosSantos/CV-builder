@@ -25,11 +25,13 @@ function Formcontainer({
 	pcolor,
 	onPcolor,
 	onLayout,
-	pfont
+	pfont,
+	onClearResume,
+	onLoadSample
 }) {
 	return (
 		<div className="form-container">
-			<Loader />
+			<Loader onLoadSample={onLoadSample} onClearResume={onClearResume} />
 			<Customize pfont={pfont} onLayout={onLayout} onPcolor={onPcolor} hide={hide} pcolor={pcolor} />
 			<Personaldetails hide={hide} personalI={personalI} onChange={onChange} />
 			<Addeducation

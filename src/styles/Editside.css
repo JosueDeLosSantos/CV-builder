@@ -2,14 +2,15 @@
 	display: flex;
 	flex-direction: column;
 	gap: var(--side-bar-gap);
-	width: 35ch;
+	min-width: 40ch;
 }
 
 .sidebar,
 .loader,
 .personal-details,
 .layout,
-.Color {
+.Color,
+.Fonts {
 	background-color: var(--resume-bg-color);
 	padding: 1rem;
 	border-radius: 0.5rem;
@@ -33,7 +34,6 @@
 .loader button {
 	background-color: #f5f5f5;
 	border: none;
-	color: #0e374e;
 	padding: 0.5rem;
 	font-family: inherit;
 	border-radius: 0.2rem;
@@ -43,6 +43,22 @@
 	display: flex;
 	justify-content: space-between;
 	flex-wrap: wrap;
+}
+
+.clear-resume,
+.load-sample,
+.sbarBtn,
+.expand-btn,
+.contact-info > div {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 5px;
+	font-size: 1rem;
+}
+
+.clear-resume {
+	color: rgb(155, 0, 0);
 }
 
 .form-container,
@@ -86,9 +102,9 @@ textarea {
 	color: rgba(0, 0, 0, 0.7);
 }
 
-input:focus-visible{
+input:focus-visible {
 	outline: none;
-	box-shadow: 1px 1px 5px rgba(1, 1, 0, .7);
+	box-shadow: 1px 1px 5px rgba(1, 1, 0, 0.7);
 }
 
 textarea {
@@ -103,14 +119,15 @@ textarea {
 	padding: 1rem;
 	background-color: var(--resume-bg-color);
 	border-radius: 0.5rem;
-	color: rgb(45, 44, 44);
 }
 
 .btn-form {
-	font-family: 'NotoSans-SemiBold';
+	font-family: "NotoSans-SemiBold";
 	display: flex;
-    align-items: center;
-    justify-content: space-between;
+	align-items: center;
+	justify-content: space-between;
+	font-size: 1rem;
+	color: rgb(45, 44, 44);
 }
 
 .expand-btn {
@@ -119,11 +136,16 @@ textarea {
 
 .create-form {
 	border: none;
-	width: fit-content;
+	width: 100%;
 	background-color: var(--resume-bg-color);
-	padding: 1rem 3rem;
-	border-radius: 50%;
-	box-shadow: 0px 0px 1px rgba(1, 1, 0, .7);
+	padding: 1rem;
+	font-family: "Roboto";
+	font-weight: 600;
+	font-size: 1rem;
+	color: rgb(90, 88, 88);
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 .form-btns {
@@ -231,7 +253,7 @@ input[type="color"] {
 	-moz-appearance: none;
 	appearance: none;
 	background-color: transparent;
-	width: 3.5rem;
+	width: 4.5rem;
 	height: 3.5rem;
 	border: none;
 	cursor: pointer;
