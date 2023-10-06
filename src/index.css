@@ -19,6 +19,7 @@ body {
   --side-bar-gap: 1.2rem;
   --titles-margin-bottom: 1rem;
   --resume-bg-color: #fff;
+  --hover-background: rgb(197 253 253);
   background-color: var(--main-bg-color);
 }
 

@@ -3,7 +3,7 @@ import { Inputsection } from "./Personaldetails"
 import { Inputsection2 } from "./Personaldetails"
 import AutoFixNormal from "@mui/icons-material/AutoFixNormal"
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline"
-import WorkIcon from '@mui/icons-material/Work';
+import WorkIcon from "@mui/icons-material/Work"
 
 function Addexperience({ ex, onEx, onOldex, onNewEdit, onCancel, onSave, onDelete, hide }) {
 	const [open, setopen] = useState("")
@@ -18,7 +18,7 @@ function Addexperience({ ex, onEx, onOldex, onNewEdit, onCancel, onSave, onDelet
 
 	return (
 		<div className={"add-experience" + " " + hide}>
-			<button onClick={handleSetOpen} className="expand-btn">
+			<button title="Manage Experience" onClick={handleSetOpen} className="expand-btn">
 				<WorkIcon />
 				<h2 className="expand-btn-header">Experience</h2>
 			</button>
@@ -136,6 +136,7 @@ function List({
 
 	const listItems = ex.map((el) => (
 		<button
+			title="Edit"
 			onClick={(e) => {
 				onEdit(e)
 				onOldex()
@@ -329,6 +330,7 @@ function Addbtn({ onNewEdit, onEdit }) {
 				onEdit(e)
 			}}
 			className="create-form"
+			title="Add new experience detail"
 		>
 			<AddCircleOutlineIcon
 				id=""

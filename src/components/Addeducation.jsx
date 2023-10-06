@@ -3,7 +3,7 @@ import { Inputsection } from "./Personaldetails"
 import { Inputsection2 } from "./Personaldetails"
 import AutoFixNormal from "@mui/icons-material/AutoFixNormal"
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline"
-import SchoolIcon from '@mui/icons-material/School';
+import SchoolIcon from "@mui/icons-material/School"
 
 function Addeducation({ ed, onEd, onNewEdit, onCancel, onOlded, onSave, onDelete, hide }) {
 	const [open, setopen] = useState("")
@@ -18,7 +18,7 @@ function Addeducation({ ed, onEd, onNewEdit, onCancel, onOlded, onSave, onDelete
 
 	return (
 		<div className={"add-education" + " " + hide}>
-			<button onClick={handleSetOpen} className="expand-btn">
+			<button title="Manage Education" onClick={handleSetOpen} className="expand-btn">
 				<SchoolIcon />
 				<h2 className="expand-btn-header">Education</h2>
 			</button>
@@ -136,6 +136,7 @@ function List({
 
 	const listItems = ed.map((el) => (
 		<button
+			title="Edit"
 			onClick={(e) => {
 				onEdit(e)
 				onOlded()
@@ -296,6 +297,7 @@ function Addbtn({ onNewEdit, onEdit }) {
 				onEdit(e)
 			}}
 			className="create-form"
+			title="Add new education detail"
 		>
 			<AddCircleOutlineIcon
 				id=""

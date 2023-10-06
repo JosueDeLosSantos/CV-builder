@@ -197,7 +197,7 @@ function Edlist({ ed, onEd }) {
 						<p onChange={onEd}>{el.school}</p>
 					</div>
 
-					<div>
+					<div className="Degree">
 						<p onChange={onEd}>{el.degree}</p>
 					</div>
 				</div>
@@ -242,7 +242,7 @@ function Exlist({ ex, onEx }) {
 						<p onChange={onEx}>{el.companyName}</p>
 					</div>
 
-					<div>
+					<div className="position-title">
 						<p onChange={onEx}>{el.positionTitle}</p>
 					</div>
 					<div className="descriptiondiv">
