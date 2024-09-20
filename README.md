@@ -21,7 +21,7 @@ To get started with the project, follow these steps:
 1. **Clone the repository:**
 
     ```bash
-    git clone https://github.com/your-username/cv-builder.git
+    git clone https://github.com/JosueDeLosSantos/CV-builder.git
     ```
 
 2. **Install dependencies:**
